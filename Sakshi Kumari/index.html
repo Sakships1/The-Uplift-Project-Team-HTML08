@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> A login form </title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+        $("#validate").click(function(){
+			var username = $("#username").val();
+			if(username.length ==""){
+				$("#usernameMsg").show();
+		    }
+			else{
+				$("#usernameMsg").html("");
+			}
+			
+			var email = $("#email").val();
+			var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			var result=re.test(String(email).toLowerCase());
+			if (result==false){
+				$("#err").show();
+			}
+			else{
+				$("#err").html("");
+		    }
+			
+            var password = $("#password").val();
+			if (password.length<8){
+				$("#passwordMsg").show();
+		    }
+			else{
+				$("#passwordMsg").html("");
+			}
+		});
+	});		   
+</script>
+	
+
+<body>
+
+<h3 style="font-family:sans-serif; color: red"><b><center>Responsive Login Form</center></b></h3>
+<h5 style="font-family:sans-serif; color: blue;"><center>This form contain these fields:</center></h5>
+<center>
+	<h6><b>Email id</b></h6>
+	<h6><b>Password</b></h6>
+	<h6><b>Display Name</b></h6>
+	<h6><b>Login button</b></h6>
+</center>
+<br><hr><br>		
+
+<div class="container">
+  <div class="row">
+    <div class="col s8 push-s2">
+      <div class="card green accent-3">
+        <div class="card-content black-text">
+          <span class="card-title"><b><center><h4>Login</h4></center></b></span><br>
+
+			<div class="input-field">
+				<i class="material-icons prefix">person</i>
+				<input type="text" name="username" id="username" class="form-control" placeholder="Enter your name here" autocomplete="off">
+			   <p id="usernameMsg" style="color: red; display:none">*Please enter a valid username*</p>
+			</div>
+			
+			<div class="input-field">
+			   <i class="material-icons prefix">email</i>
+			   <input type="text" name="email" id="email" class="form-control" placeholder="user@gmail.com" autocomplete="off">
+			     <p id="err" style="color: red; display:none"> *Please enter valid Email*</p>
+			</div>
+			
+			
+			<div class="input-field">
+			   <i class="material-icons prefix">lock</i>
+			   <input type="password" name="password" id="password" class="form-control" placeholder="password">
+			   <p id="passwordMsg" style="color: red; display:none">*Password must be of atleast 8 character*</h5>
+			</div><br><br><br>
+			
+			<center><button class="btn waves-effect waves-light" type="submit" name="action" id="validate"  style="background: rgba(0,0,0,0)">Login
+            <i class="material-icons right">send</i>
+            </button></center>
+		</div>
+	   </div>
+	</div>
+   </div>
+  </div>
+</div>
+
+</body>
+
+</html>
